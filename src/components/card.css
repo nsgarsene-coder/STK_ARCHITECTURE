@@ -1,0 +1,111 @@
+.stk-card {
+    width: 220px;
+    height: 320px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #2D3E40; 
+    color: white;
+    font-family: sans-serif;
+  }
+
+  .stk-card.is-nature {
+    background: #3A593E; /* Vert organique */
+  }
+
+  .stk-card.is-application {
+    background: #4A5D60; /* Gris-bleu technique */
+  }
+
+  .stk-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .stk-card.state-selected {
+    outline: 3px solid #FFF;
+    transform: scale(1.02);
+  }
+
+  .stk-card.state-error {
+    animation: shake 0.4s;
+    outline: 3px solid #FF4B4B;
+  }
+
+  .stk-card-header {
+    padding: 12px;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+  }
+
+  .stk-logo {
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  .stk-card-image-container {
+    height: 60%;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+
+  .stk-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .stk-card-footer {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40%;
+  }
+
+  .stk-card-title {
+    font-size: 18px;
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .stk-card-badge {
+    font-size: 10px;
+    opacity: 0.8;
+    letter-spacing: 0.5px;
+    margin-top: auto;
+  }
+
+  .stk-card-corner {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 15px;
+    height: 15px;
+    border-right: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+
+  .stk-card-matched-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+  }
