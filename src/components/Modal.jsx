@@ -24,33 +24,36 @@ export default function Modal({
                 ========================================= */}
                 {isFicheExplorationReady ? (
                     <div className="dev5-fiche-zone">
-                        {/* Le DEV 5 viendra écrire tout son code HTML ici plus tard */}
                         <h2>Fiche d'exploration générée !</h2>
                         <p>Score final : ...</p>
-                        {/* Fin de la zone DEV 5 */}
                     </div>
                 ) : (
-
-                {/* =========================================
-                    ZONE DEV 4 : TON CODE (INDICES ET REVEAL)
-                    Tant que la fiche n'est pas prête, c'est ton code qui gère
-                ========================================= */}
+                    /* =========================================
+                        ZONE DEV 4 : TON CODE (INDICES ET REVEAL)
+                        Tant que la fiche n'est pas prête, c'est ton code qui gère
+                    ========================================= */
                     <div className="dev4-assistance-zone">
-                        <small>CELLULE D'AIDE BIOMIMÉTIQUE</small>
+                        <small style={{ color: '#4a7298', fontWeight: 'bold' }}>
+                            CELLULE D'AIDE BIOMIMÉTIQUE
+                        </small>
                         
                         {/* Affichage de tes indices */}
                         {hintText ? (
-                            <p>💡 {hintText}</p>
+                            <p style={{ margin: '15px 0' }}>💡 {hintText}</p>
                         ) : (
-                            <p>Analysez les cartes pour trouver le lien.</p>
+                            <p style={{ margin: '15px 0' }}>Analysez les cartes pour trouver le lien.</p>
                         )}
 
                         <div className="actions">
-                            <button onClick={onClose}>Continuer à chercher</button>
+                            <button onClick={onClose} className="btn-continue">
+                                Continuer à chercher
+                            </button>
                             
                             {/* Ton bouton de secours */}
                             {showRevealBtn && (
-                                <button onClick={onReveal}>👁 VOIR LA SOLUTION</button>
+                                <button onClick={onReveal} className="btn-reveal">
+                                    👁 VOIR LA SOLUTION
+                                </button>
                             )}
                         </div>
                     </div>
