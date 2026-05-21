@@ -1,67 +1,62 @@
 // src/components/Modal.jsx
 import React from 'react';
-import '../style.css'; // S'assure que le style global est chargé
 
-const Modal = ({ 
+export default function Modal({ 
     isOpen, 
     onClose, 
-    // Props injectées par ton gameEngine
+    // --- TES PROPS (DEV 4) ---
     hintText, 
     showRevealBtn, 
-    onReveal 
-}) => {
+    onReveal,
+    // --- PROPS DU DEV 5 (Il les gérera plus tard) ---
+    isFicheExplorationReady, 
+    ficheData 
+}) {
     if (!isOpen) return null;
 
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                
-                {/* Zone d'Assistance (DEV 4) */}
-                <div className="assistance-zone" style={{ marginBottom: '20px', padding: '15px', background: '#f5f2eb', borderRadius: '8px' }}>
-                    <small style={{ color: '#4a7298', fontWeight: 'bold', letterSpacing: '1px' }}>
-                        CELLULE D'AIDE BIOMIMÉTIQUE
-                    </small>
-                    
-                    {hintText ? (
-                        <p style={{ marginTop: '10px', fontSize: '1rem', fontStyle: 'italic' }}>
-                            💡 {hintText}
-                        </p>
-                    ) : (
-                        <p style={{ marginTop: '10px', fontSize: '1rem', color: '#666' }}>
-                            Analysez les caractéristiques des cartes pour trouver le lien.
-                        </p>
-                    )}
-                </div>
 
-                {/* Actions */}
-                <div style={{ display: 'flex', gap: '15px', justifyContent: 'flex-start' }}>
-                    <button className="btn-continue" onClick={onClose}>
-                        CONTINUER À CHERCHER
-                    </button>
-                    
-                    {/* Bouton de secours (Reveal) - Apparaît au niveau 3 */}
-                    {showRevealBtn && (
-                        <button 
-                            onClick={onReveal}
-                            style={{
-                                background: 'transparent',
-                                border: '1px solid #d4b5ad',
-                                color: '#a86c60',
-                                borderRadius: '30px',
-                                padding: '10px 25px',
-                                fontWeight: 'bold',
-                                fontSize: '0.8rem',
-                                cursor: 'pointer'
-                            }}
-                        >
-                            👁 VOIR LA SOLUTION
-                        </button>
-                    )}
-                </div>
+                {/* =========================================
+                    ZONE DEV 5 : LA FICHE DE FIN
+                    Si la fiche est prête, on l'affiche
+                ========================================= */}
+                {isFicheExplorationReady ? (
+                    <div className="dev5-fiche-zone">
+                        {/* Le DEV 5 viendra écrire tout son code HTML ici plus tard */}
+                        <h2>Fiche d'exploration générée !</h2>
+                        <p>Score final : ...</p>
+                        {/* Fin de la zone DEV 5 */}
+                    </div>
+                ) : (
+
+                {/* =========================================
+                    ZONE DEV 4 : TON CODE (INDICES ET REVEAL)
+                    Tant que la fiche n'est pas prête, c'est ton code qui gère
+                ========================================= */}
+                    <div className="dev4-assistance-zone">
+                        <small>CELLULE D'AIDE BIOMIMÉTIQUE</small>
+                        
+                        {/* Affichage de tes indices */}
+                        {hintText ? (
+                            <p>💡 {hintText}</p>
+                        ) : (
+                            <p>Analysez les cartes pour trouver le lien.</p>
+                        )}
+
+                        <div className="actions">
+                            <button onClick={onClose}>Continuer à chercher</button>
+                            
+                            {/* Ton bouton de secours */}
+                            {showRevealBtn && (
+                                <button onClick={onReveal}>👁 VOIR LA SOLUTION</button>
+                            )}
+                        </div>
+                    </div>
+                )}
 
             </div>
         </div>
     );
-};
-
-export default Modal;
+}
