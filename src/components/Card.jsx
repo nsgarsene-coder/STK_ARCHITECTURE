@@ -1,6 +1,5 @@
 import React from 'react';
-import './Card.css'; // Assurez-vous de créer ce fichier CSS ou d'utiliser Tailwind
-
+import './card.css';  // ← ici
 /**
  * Composant Card - Module Universel
  * @param {Object} data - Les infos de la carte (nom, image, type)
@@ -8,9 +7,9 @@ import './Card.css'; // Assurez-vous de créer ce fichier CSS ou d'utiliser Tail
  * @param {function} onClick - Fonction de rappel au clic
  */
 const Card = ({ data, state, onClick }) => {
-  const { nom, image, type } = data;
-  const isNature = type === 'nature';
-
+  const { nom, image, type, symbol } = data;
+const isNature = type === 'nature';
+  
   return (
     <div 
       className={`stk-card ${isNature ? 'is-nature' : 'is-application'} state-${state}`}
@@ -23,9 +22,11 @@ const Card = ({ data, state, onClick }) => {
 
       {/* Zone Image avec découpe diagonale */}
       <div className="stk-card-image-container">
-        <img src={image} alt={nom} className="stk-card-image" />
-        <div className="stk-card-overlay"></div>
-      </div>
+  {image
+    ? <img src={image} alt={nom} className="stk-card-image" />
+    : <span style={{ fontSize: '3rem' }}>{symbol}</span>
+  }
+</div>
 
       {/* Zone Texte */}
       <div className="stk-card-footer">
